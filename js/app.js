@@ -5,7 +5,6 @@ $.ajax('./data/page-1.json')
       let newAnimal = new Animal (element);
       newAnimal.render();
     });
-    $( '#photo-template' ).first().remove();
   });
 function Animal(myData) {
   this.image = myData.image_url;
@@ -27,13 +26,13 @@ Animal.prototype.render = function () {
     map[this.value] = true;
   });
 
-  let dataClone=$( '#photo-template' ).clone();
-  dataClone.addClass( this.keyword );
 
-  dataClone.find( 'h2' ).text( this.title );
-  dataClone.find( 'img' ).attr( 'src', this.image );
-  dataClone.find( 'p' ).text( this.description );
-  $( 'main' ).append( dataClone );
+  let dataClone=$( '#photo-template' ).clone();
+
+
+  let dataClone = $('.photo-template').html();
+  let dataSet = Mustache.render(dataClone,this);
+  $( 'main' ).append( dataSet );
 };
 function selectList() {
   let shown = {};
@@ -49,6 +48,7 @@ function selectList() {
 
 $( 'select' ).on( 'change', function() {
   let selected = $( this ).val();
+
   $( 'div' ).hide();
   $( `.${selected}` ).show();
 } );
