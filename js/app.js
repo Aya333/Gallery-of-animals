@@ -17,7 +17,7 @@ function Animal(myData) {
 }
 let animalArray = [];
 Animal.prototype.render = function () {
-  let option= $( '<option></option>' ).text( this.keyword );
+  let option=$( '<option></option>' ).text( this.keyword );
   $( 'select' ).append( option );
   let map = {};
   $('select option').each(function () {
@@ -26,8 +26,10 @@ Animal.prototype.render = function () {
     }
     map[this.value] = true;
   });
+
   let dataClone=$( '#photo-template' ).clone();
   dataClone.addClass( this.keyword );
+
   dataClone.find( 'h2' ).text( this.title );
   dataClone.find( 'img' ).attr( 'src', this.image );
   dataClone.find( 'p' ).text( this.description );
@@ -44,10 +46,11 @@ function selectList() {
     }
   } );
 }
+
 $( 'select' ).on( 'change', function() {
   let selected = $( this ).val();
   $( 'div' ).hide();
-  $( `.${selected}` ).show( 100 );
+  $( `.${selected}` ).show();
 } );
 
 selectList();
