@@ -40,3 +40,19 @@ footer{
     text-shadow: 3px 2px 1px #979fa1;
     font-size:30px
 }
+
+button {
+    margin-right: 20px;
+    padding:10px;
+    border: 2px solid rgb(201, 91, 94);
+    color: rgb(196, 93, 97);
+    background-color: white;
+
+}
+button:hover {
+    border: none;
+    background-color: rgb(155, 63, 66);
+    color: white;
+    margin-right: 24px;
+
+}
